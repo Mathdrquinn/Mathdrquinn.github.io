@@ -9,6 +9,14 @@ googleAnalytics = ""
 paginate = 10
 footnotereturnlinkcontents = "↩"
 theme = "hugo-icarus-theme"
+# For GH-pages
+contentdir = "content"
+layoutdir =  "layouts"
+publishdir = "public"
+canonifyurls = true
+
+[indexes]
+  category = "categories"
 
 [permalinks]
   post = "/:year/:month/:day/:slug"
