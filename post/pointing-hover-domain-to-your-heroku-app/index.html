@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Brendan Quinn</title>
+    <title>Pointing Hover Domain to Your Heroku App | Brendan Quinn</title>
     <meta name="generator" content="Hugo 0.15" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Brendan Quinn">
     
-      <meta name="description" content="Hey there, I&#39;m Brendan Quinn, an energetic introvert with a love of family, walking/hiking, listening, teaching, and code.">
+      <meta name="description" content="Want to point your hover domain to your Heroku app?  This article will ELI5 how to alter the DNS records and Heroku settings to do just that.">
     
-    
-      <link href="http://brendan-quinn.xyz/index.xml" rel="alternate" type="application/rss+xml" title="Brendan Quinn" />
-      <link href="http://brendan-quinn.xyz/index.xml" rel="feed" type="application/rss+xml" title="Brendan Quinn" />
     
     <link rel="icon" href="http://brendan-quinn.xyz/favicon.ico">
     <link rel="apple-touch-icon" href="http://brendan-quinn.xyz/apple-touch-icon.png" />
@@ -22,12 +19,13 @@
     <link rel="stylesheet" href="http://brendan-quinn.xyz/fancybox/jquery.fancybox.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Brendan Quinn" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://brendan-quinn.xyz/" />
+    <meta property="og:title" content="Pointing Hover Domain to Your Heroku App" />
+<meta property="og:description" content="Want to point your hover domain to your Heroku app?  This article will ELI5 how to alter the DNS records and Heroku settings to do just that." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" />
 
 
+<meta property="og:updated_time" content="2016-02-03T09:12:34-05:00"/>
 
 
 
@@ -40,18 +38,35 @@
 
     
     
-<meta itemprop="name" content="Brendan Quinn">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Pointing Hover Domain to Your Heroku App">
+<meta itemprop="description" content="Want to point your hover domain to your Heroku app?  This article will ELI5 how to alter the DNS records and Heroku settings to do just that.">
 
+
+<meta itemprop="dateModified" content="2016-02-03T09:12:34-05:00" />
+<meta itemprop="wordCount" content="253">
+
+
+
+<meta itemprop="keywords" content="dns," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Pointing Hover Domain to Your Heroku App"/>
+<meta name="twitter:description" content="Want to point your hover domain to your Heroku app?  This article will ELI5 how to alter the DNS records and Heroku settings to do just that."/>
+<meta name="twitter:site" content="@Mathdrquinn"/>
+
+
 </head>
 <body>
 <div class="container">
 
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
   <div class="outer">
     <a href="http://brendan-quinn.xyz/" id="logo"><i class="logo" style="background-image: url('http://brendan-quinn.xyz/css/images/Brendan_Quinn_logo_lg.png')"></i><span class="site-title">Brendan Quinn</span></a>
@@ -123,8 +138,8 @@
 </header>
 
 
-    <div class="outer">
-    <aside id="profile">
+   	<div class="outer">
+	  <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://brendan-quinn.xyz/css/images/BrendanQuinn.jpeg">
@@ -214,25 +229,21 @@
 <td><a href="//twitter.com/Mathdrquinn" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
 
 
-          <td><a href="http://brendan-quinn.xyz/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
         </tr>
       </table>
     </div>
   </div>
 </aside>
 
-    <section id="main">
-    
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+	  <section id="main">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
         <div class="article-inner">
             
-            <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" itemprop="url">
                 
                 <img src="http://brendan-quinn.xyz/css/images/banners/hover.jpg" class="article-banner" alt="Pointing Hover Domain to Your Heroku App">
                 
             
-            </a>
 
             <header class="article-header">
     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app">
@@ -285,15 +296,28 @@
 </header>
 
             <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Hosting static sites for free on Github&rsquo;s Pages is fantastic, but it might be more preferable to ru your own server.  My go-to for that is <a href="https://www.heroku.com/">Heroku</a>.  This post will not go into how to host on Heroku (I will assume you already are hosting there), but how to point your purchased <a href="hover.com">hover</a> domain to your Heroku-hosted web-app.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app">
-                        Read more
-                    </a>
-                </p>
+                <p>Hosting static sites for free on Github&rsquo;s Pages is fantastic, but it might be more preferable to ru your own server.  My go-to for that is <a href="https://www.heroku.com/">Heroku</a>.  This post will not go into how to host on Heroku (I will assume you already are hosting there), but how to point your purchased <a href="hover.com">hover</a> domain to your Heroku-hosted web-app.  The process has a few more nuances than my previous post on <a href="http://brendan-quinn.xyz/blog/pointing-hover-domain-to-github-pages/">pointing to gh-pages</a>.</p>
+
+<p>For the following directions I&rsquo;ll use <your-Heroku-URL> in place of your heroku URL and <your-hover-URL> as your purchased hover URL.</p>
+
+<ol>
+<li>On hover click through your desired domain (<a href="https://hover.com/domain/">https://hover.com/domain/</a><your-hover-URL>).  Under the initial &ldquo;Domain Details&rdquo; tab, edit the &ldquo;Forward This Domain&rdquo; value and enter <your-Heroku-URL>.
+<img src="http://brendan-quinn.xyz/css/images/hover-to-heroku-domain-details.jpg" alt="hover to Heroku Domain Details example" /></li>
+<li>Still on hover, move over to the &ldquo;DNS&rdquo; tab.  Click &ldquo;ADD NEW&rdquo;.  Enter the following values:
+
+<ul>
+<li>Hostname: www, Record Type: CNAME, Value: <your-Heroku-URL>
+And Save.  Your screen should look like this:
+<img src="http://brendan-quinn.xyz/css/images/hover-to-heroku-dns-records.jpg" alt="hover to Heroku DNS record example" /></li>
+</ul></li>
+<li>Within your Heroku dashboard, open your app and go to the settings tab (the URL should resemble <a href="https://dashboard.heroku.com/apps/">https://dashboard.heroku.com/apps/</a><your-Heroku-URL>/settings).  Scroll down to the Domains section and click &ldquo;Add domain&rdquo; and enter the following values:
+
+<ul>
+<li>Domain Name: <your-hover-URL>, DNS Target: <your-Heroku-URL>.</li>
+</ul></li>
+<li>Boom goes the dynomite.  Give it a few minutes to settle (it took mine 10-15 min) and you&rsquo;re off and ready!  If you have any trouble, I used hover&rsquo;s chat to talk with a super helpful guy named Ryan.  While you might not get Ryan, hover&rsquo;s service is top-notch and they&rsquo;ll help you out and send you, in my opinion, a few too many emails assuring your issue was resolved.</li>
+</ol>
+
             </div>
             <footer class="article-footer">
     <a data-url="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" data-id="61c833af1d02600cf26307d10a2e1ec9" class="article-share-link">
@@ -307,102 +331,46 @@
 </footer>
 
         </div>
-    </article>
+
+        
+<nav id="article-nav">
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" itemprop="url">
-                
-                <img src="http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg" class="article-banner" alt="Pointing Hover Domain to Github Pages">
-                
-            
-            </a>
-
-            <header class="article-header">
-    <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages">
-    <h1 class="article-title" itemprop="name">
-        Pointing Hover Domain to Github Pages
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-02-02 09:49:50 -0500 EST" itemprop="datePublished">February 02 2016 @ 09:49AM</time>
-            &middot;
-            324
-            words
-            &middot;
-            2
-            minute read
-        </div>
-
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="http://brendan-quinn.xyz/categories/dns">DNS</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/github">Github</a>
-                &middot;
-                
-                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/hover">Hover</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    I was introduced to <a href="hover.com">hover</a> by being an info nerd with <a href="http://99percentinvisible.org/">99% Invisible</a>.  Many people still use Go Daddy because it is the industry standard and, for the most part, it is cheaper.  I prefer good customer service and a simple UX, hence my hover preference.  It seems there is still a small lack of resources on integrating hosting services with hover, so I&rsquo;d like to put my findings here.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" data-id="45971df20f28e2132bcf0b645a3b29de" class="article-share-link">
-        Share
+    <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Pointing Hover Domain to Github Pages</div>
     </a>
     
-    <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
+
     
-</footer>
-
-        </div>
-    </article>
-    
-
-    <nav id="page-nav">
-
 </nav>
+
+
+    </article>
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'brendanquinn';
+    var disqus_identifier = 'http:\/\/brendan-quinn.xyz\/post\/pointing-hover-domain-to-your-heroku-app';
+    var disqus_title = 'Pointing Hover Domain to Your Heroku App';
+    var disqus_url = 'http:\/\/brendan-quinn.xyz\/post\/pointing-hover-domain-to-your-heroku-app';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
 
 </section>
 
-
-    <aside id="sidebar">
+	  <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -416,7 +384,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="Brendan Quinn" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="Pointing Hover Domain to Your Heroku App" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -441,7 +409,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="Brendan Quinn" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="Pointing Hover Domain to Your Heroku App" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -475,7 +443,7 @@
     <div id="toTop" class="fa fa-chevron-up"></div>
 </aside>
 
-    </div>
+	</div>
 </div>
 
 <footer id="footer">

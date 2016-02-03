@@ -6,34 +6,71 @@
     <description>Recent content on Brendan Quinn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Feb 2016 09:49:50 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 03 Feb 2016 09:12:34 -0500</lastBuildDate>
     <atom:link href="http://brendan-quinn.xyz/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Pointing Hover Domain to Github Pages</title>
-      <link>http://brendan-quinn.xyz/blog/pointing-hover-domain-to-github-pages</link>
-      <pubDate>Tue, 02 Feb 2016 09:49:50 -0500</pubDate>
+      <title>Pointing Hover Domain to Your Heroku App</title>
+      <link>http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app</link>
+      <pubDate>Wed, 03 Feb 2016 09:12:34 -0500</pubDate>
       
-      <guid>http://brendan-quinn.xyz/blog/pointing-hover-domain-to-github-pages</guid>
-      <description>&lt;p&gt;Pointing Hover Domain to Github Pages&lt;/p&gt;
+      <guid>http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app</guid>
+      <description>&lt;p&gt;Hosting static sites for free on Github&amp;rsquo;s Pages is fantastic, but it might be more preferable to ru your own server.  My go-to for that is &lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;.  This post will not go into how to host on Heroku (I will assume you already are hosting there), but how to point your purchased &lt;a href=&#34;hover.com&#34;&gt;hover&lt;/a&gt; domain to your Heroku-hosted web-app.  The process has a few more nuances than my previous post on &lt;a href=&#34;http://brendan-quinn.xyz/blog/pointing-hover-domain-to-github-pages/&#34;&gt;pointing to gh-pages&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in&lt;/p&gt;
+&lt;p&gt;For the following directions I&amp;rsquo;ll use &lt;your-Heroku-URL&gt; in place of your heroku URL and &lt;your-hover-URL&gt; as your purchased hover URL.&lt;/p&gt;
 
-&lt;p&gt;reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On hover click through your desired domain (&lt;a href=&#34;https://hover.com/domain/&#34;&gt;https://hover.com/domain/&lt;/a&gt;&lt;your-hover-URL&gt;).  Under the initial &amp;ldquo;Domain Details&amp;rdquo; tab, edit the &amp;ldquo;Forward This Domain&amp;rdquo; value and enter &lt;your-Heroku-URL&gt;.
+&lt;img src=&#34;http://brendan-quinn.xyz/css/images/hover-to-heroku-domain-details.jpg&#34; alt=&#34;hover to Heroku Domain Details example&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Still on hover, move over to the &amp;ldquo;DNS&amp;rdquo; tab.  Click &amp;ldquo;ADD NEW&amp;rdquo;.  Enter the following values:
+
+&lt;ul&gt;
+&lt;li&gt;Hostname: www, Record Type: CNAME, Value: &lt;your-Heroku-URL&gt;
+And Save.  Your screen should look like this:
+&lt;img src=&#34;http://brendan-quinn.xyz/css/images/hover-to-heroku-dns-records.jpg&#34; alt=&#34;hover to Heroku DNS record example&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Within your Heroku dashboard, open your app and go to the settings tab (the URL should resemble &lt;a href=&#34;https://dashboard.heroku.com/apps/&#34;&gt;https://dashboard.heroku.com/apps/&lt;/a&gt;&lt;your-Heroku-URL&gt;/settings).  Scroll down to the Domains section and click &amp;ldquo;Add domain&amp;rdquo; and enter the following values:
+
+&lt;ul&gt;
+&lt;li&gt;Domain Name: &lt;your-hover-URL&gt;, DNS Target: &lt;your-Heroku-URL&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Boom goes the dynomite.  Give it a few minutes to settle (it took mine 10-15 min) and you&amp;rsquo;re off and ready!  If you have any trouble, I used hover&amp;rsquo;s chat to talk with a super helpful guy named Ryan.  While you might not get Ryan, hover&amp;rsquo;s service is top-notch and they&amp;rsquo;ll help you out and send you, in my opinion, a few too many emails assuring your issue was resolved.&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     
     <item>
-      <title>Pointing Hover Domain to Your Heroku App</title>
-      <link>http://brendan-quinn.xyz/blog/pointing-hover-domain-to-your-heroku-app</link>
-      <pubDate>Fri, 29 Jan 2016 09:12:34 -0500</pubDate>
+      <title>Pointing Hover Domain to Github Pages</title>
+      <link>http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages</link>
+      <pubDate>Tue, 02 Feb 2016 09:49:50 -0500</pubDate>
       
-      <guid>http://brendan-quinn.xyz/blog/pointing-hover-domain-to-your-heroku-app</guid>
-      <description>
+      <guid>http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages</guid>
+      <description>&lt;p&gt;I was introduced to &lt;a href=&#34;hover.com&#34;&gt;hover&lt;/a&gt; by being an info nerd with &lt;a href=&#34;http://99percentinvisible.org/&#34;&gt;99% Invisible&lt;/a&gt;.  Many people still use Go Daddy because it is the industry standard and, for the most part, it is cheaper.  I prefer good customer service and a simple UX, hence my hover preference.  It seems there is still a small lack of resources on integrating hosting services with hover, so I&amp;rsquo;d like to put my findings here.  This process was made a lot easier with help from &lt;a href=&#34;http://michaeljdeeb.com/blog/using-a-custom-domain-with-github-pages/&#34;&gt;Michael Deeb&lt;/a&gt;, though my explanation aims to be more visual and ELI5.  This post assumes you&amp;rsquo;re familiar with Github and the git cli.  If you&amp;rsquo;re not familiar, begin &lt;a href=&#34;https://help.github.com/articles/set-up-git/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h1 id=&#34;pointing-hover-domain-to-your-heroku-app:61c833af1d02600cf26307d10a2e1ec9&#34;&gt;Pointing Hover Domain to Your Heroku App&lt;/h1&gt;
+&lt;p&gt;This static blog is hosted using &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github&amp;rsquo;s Pages&lt;/a&gt; (which only handles static sites), which is awesome because it completely free if you don&amp;rsquo;t mind your code being public.  Then spend a couple of dollars your domain of choice from hover and lets begin.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;p&gt;For the following directions I&amp;rsquo;ll use &lt;GH-Pages-URL&gt; in place of your Github Pages URL and &lt;your-hover-URL&gt; as your purchased hover URL.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Within your hover account, click your desired domain and traverse to the DNS tab.&lt;/li&gt;
+&lt;li&gt;Delete all DNS records with a &amp;ldquo;Records&amp;rdquo; value of &amp;ldquo;A&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Add new records with the following values:
+
+&lt;ul&gt;
+&lt;li&gt;Hostname: @, Record Type: A, Value: 192.30.252.153&lt;/li&gt;
+&lt;li&gt;Hostname: @, Record Type: A, Value: 192.30.252.154&lt;/li&gt;
+&lt;li&gt;Hostname: www, Record Type: CNAME, Value: &lt;GH-Pages-URL&gt;
+When complete, your screen should look something like:
+&lt;img src=&#34;http://brendan-quinn.xyz/css/images/hover-dns-records.jpg&#34; alt=&#34;hover DNS records example&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Go to your Github repo&amp;rsquo;s root directory.  To the right of the green &amp;ldquo;New pull request&amp;rdquo; button, click &amp;ldquo;New file&amp;rdquo;.  Give this file the exact name &amp;ldquo;CNAME&amp;rdquo; (UPPERCASE!!) and enter &lt;your-hover-URL&gt; on line one with no other content and commit the file.  If you prefer to use your favorite editor to create the file and then push it up, be my guest.  The CNAME file should resemble this:
+&lt;img src=&#34;http://brendan-quinn.xyz/css/images/Github-CNAME-file.jpg&#34; alt=&#34;Github CNAME file&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Thats it! But be patient.  The redirect can take up to 10 min to settle, although usually it happens in much less time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;All the Best,&lt;/p&gt;
+
+&lt;p&gt;Brendan&lt;/p&gt;
 </description>
     </item>
     
