@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Works on Brendan Quinn</title>
+    <link>http://brendan-quinn.xyz/work/</link>
+    <description>Recent content in Works on Brendan Quinn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Feb 2016 09:49:50 -0500</lastBuildDate>
+    <atom:link href="http://brendan-quinn.xyz/work/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Landing Page with Email Form</title>
+      <link>http://brendan-quinn.xyz/work/sw-subscribe/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/sw-subscribe/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://pages.sunglasswarehouse.com/subscribe&#34;&gt;simple landing page&lt;/a&gt; created to integrate with Salesforce.  Vanilla javaScript and CSS.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OC Directory</title>
+      <link>http://brendan-quinn.xyz/work/ocdirectory/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/ocdirectory/</guid>
+      <description>&lt;p&gt;A single page Angular &lt;a href=&#34;http://brendan-quinn.xyz/OCDirectory/gulp/&#34;&gt;web-app&lt;/a&gt;, utilizing standard 1.1.X directives and has Firebase integration.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>One Click Gives Back</title>
+      <link>http://brendan-quinn.xyz/work/ocv-give-back/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/ocv-give-back/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://www.oneclickventures.com/give-back.html&#34;&gt;static landing page&lt;/a&gt; build for One Click.  Integrated with Youtube&amp;rsquo;s API for video functionality.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Readers.com Blog</title>
+      <link>http://brendan-quinn.xyz/work/readers/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/readers/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://www.readers.com/blog/&#34;&gt;Wordpress blog&lt;/a&gt; built using a custom child theme and jQuery.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SRI Inc.</title>
+      <link>http://brendan-quinn.xyz/work/sriservice/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/sriservice/</guid>
+      <description>&lt;p&gt;Wordpress blog for &lt;a href=&#34;http://www.sriservices.com&#34;&gt;SRI Inc&lt;/a&gt;.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sunglasswarehouse Blog</title>
+      <link>http://brendan-quinn.xyz/work/sunglassharehouse/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/sunglassharehouse/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://www.sunglasswarehouse.com/blog/&#34;&gt;Wordpress blog&lt;/a&gt; built using a custom child theme.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>felix &#43; iris Salesforce Email Subscription Form</title>
+      <link>http://brendan-quinn.xyz/work/fni-subscribe/</link>
+      <pubDate>Thu, 04 Feb 2016 09:49:50 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/work/fni-subscribe/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://pages.felixandiris.com/subscribe&#34;&gt;simple landing page&lt;/a&gt; created to integrate with Salesforce.  Vanilla javaScript and CSS.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
