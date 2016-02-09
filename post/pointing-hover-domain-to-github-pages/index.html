@@ -55,6 +55,7 @@
 
 </head>
 <body>
+  <div class="page-loading" style="width: 100%; overflow: hidden; position: absolute; z-index: 100; top: 0; bottom: 0; right: 0; left: 0; display: flex; background: #fff; flex-flow: row nowrap; justify-content: center; align-items: center;"><img src="http://brendan-quinn.xyz/pie.gif" alt="loading..."></div>
   <div class="container">
 
 
@@ -123,10 +124,6 @@
           
           
           <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-          <input type="search" name="q" results="0" class="search-form-input" placeholder="Search">
-          <input type="hidden" name="q" value="site:http://brendan-quinn.xyz/">
-          </form>
         </td>
       </tr>
       </tbody>
@@ -462,11 +459,11 @@ When complete, your screen should look something like:
   var stylesLink = document.createElement('link');
   stylesLink.rel = "stylesheet";
   stylesLink.href = "http:\/\/brendan-quinn.xyz\/css/styles.min.css";
-  document.querySelector("head").appendChild(stylesLink);
+  document.querySelector("body").appendChild(stylesLink);
   var link = document.createElement('link');
   link.rel = "stylesheet";
   link.href = "//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600|Source+Code+Pro";
-  document.querySelector("head").appendChild(link);
+  document.querySelector("body").appendChild(link);
 })();
 </script>
 
