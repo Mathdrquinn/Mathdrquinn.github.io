@@ -17,7 +17,7 @@
       <guid>http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app</guid>
       <description>&lt;p&gt;Hosting static sites for free on Github&amp;rsquo;s Pages is fantastic, but it might be more preferable to ru your own server.  My go-to for that is &lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;.  This post will not go into how to host on Heroku (I will assume you already are hosting there), but how to point your purchased &lt;a href=&#34;hover.com&#34;&gt;hover&lt;/a&gt; domain to your Heroku-hosted web-app.  The process has a few more nuances than my previous post on &lt;a href=&#34;http://brendan-quinn.xyz/blog/pointing-hover-domain-to-github-pages/&#34;&gt;pointing to gh-pages&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;For the following directions I&amp;rsquo;ll use &lt;your-Heroku-URL&gt; in place of your heroku URL and &lt;your-hover-URL&gt; as your purchased hover URL.&lt;/p&gt;
+&lt;p&gt;For the following directions I&amp;rsquo;ll use &lt;your-Heroku-URL&gt; in place of your Heroku URL and &lt;your-hover-URL&gt; as your purchased hover URL.&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;On hover click through your desired domain (&lt;a href=&#34;https://hover.com/domain/&#34;&gt;https://hover.com/domain/&lt;/a&gt;&lt;your-hover-URL&gt;).  Under the initial &amp;ldquo;Domain Details&amp;rdquo; tab, edit the &amp;ldquo;Forward This Domain&amp;rdquo; value and enter &lt;your-Heroku-URL&gt;.
@@ -36,6 +36,10 @@ And Save.  Your screen should look like this:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Boom goes the dynomite.  Give it a few minutes to settle (it took mine 10-15 min) and you&amp;rsquo;re off and ready!  If you have any trouble, I used hover&amp;rsquo;s chat to talk with a super helpful guy named Ryan.  While you might not get Ryan, hover&amp;rsquo;s service is top-notch and they&amp;rsquo;ll help you out and send you, in my opinion, a few too many emails assuring your issue was resolved.&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;All the Best,&lt;/p&gt;
+
+&lt;p&gt;Brendan&lt;/p&gt;
 </description>
     </item>
     

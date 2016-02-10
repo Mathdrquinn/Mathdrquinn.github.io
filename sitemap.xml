@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://brendan-quinn.xyz/</loc>
-    <lastmod>2016-02-04T09:49:50-05:00</lastmod>
+    <lastmod>2016-02-09T16:30:47-05:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://brendan-quinn.xyz/post/using-html5-and-media-queries-for-responsive-images</loc>
+    <lastmod>2016-02-09T16:30:47-05:00</lastmod>
   </url>
   
   <url>
