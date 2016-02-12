@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seo on Brendan Quinn</title>
+    <link>http://brendan-quinn.xyz/categories/seo/</link>
+    <description>Recent content in Seo on Brendan Quinn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Feb 2016 03:01:40 -0500</lastBuildDate>
+    <atom:link href="http://brendan-quinn.xyz/categories/seo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Working with Hugo&#39;s Internal Partial Templates: twitter-cards</title>
+      <link>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards</link>
+      <pubDate>Fri, 12 Feb 2016 03:01:40 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards</guid>
+      <description>&lt;p&gt;Hugo&amp;rsquo;s internal template are neat and helpful.  They are templates that &lt;a href=&#34;https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go&#34;&gt;live within hugo&lt;/a&gt; and can be referenced similar to other templates.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{{ template &amp;quot;_internal/opengraph.html&amp;quot; . }}
+{{ template &amp;quot;_internal/google_news.html&amp;quot; . }}
+{{ template &amp;quot;_internal/schema.html&amp;quot; . }}
+{{ template &amp;quot;_internal/twitter_cards.html&amp;quot; . }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As I developed this blog with Hugo&amp;rsquo;s help, I needed to dive into the &lt;code&gt;_internal/twitter_cards.html&lt;/code&gt; template to make sure I had my &lt;code&gt;config.toml&lt;/code&gt; set up correctly.  That search led me &lt;a href=&#34;https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go#L147&#34;&gt;here&lt;/a&gt;.  While helpful, I think it is still in alpha.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{{ if .IsPage }}
+  {{ with .Params.images }}
+    &amp;lt;!-- Twitter summary card with large image must be at least 280x150px --&amp;gt;
+    &amp;lt;meta name=&amp;quot;twitter:card&amp;quot; content=&amp;quot;summary_large_image&amp;quot;/&amp;gt;
+    &amp;lt;meta name=&amp;quot;twitter:image:src&amp;quot; content=&amp;quot;{{ index . 0 | absURL }}&amp;quot;/&amp;gt;
+{{ else }}
+  &amp;lt;meta name=&amp;quot;twitter:card&amp;quot; content=&amp;quot;summary&amp;quot;/&amp;gt;
+{{ end }}
+  &amp;lt;!-- Twitter Card data --&amp;gt;
+  &amp;lt;meta name=&amp;quot;twitter:title&amp;quot; content=&amp;quot;{{ .Title }}&amp;quot;/&amp;gt;
+  &amp;lt;meta name=&amp;quot;twitter:description&amp;quot; content=&amp;quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&amp;quot;/&amp;gt;
+  {{ with .Site.Social.twitter }}
+    &amp;lt;meta name=&amp;quot;twitter:site&amp;quot; content=&amp;quot;@{{ . }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ with .Site.Social.twitter_domain }}
+    &amp;lt;meta name=&amp;quot;twitter:domain&amp;quot; content=&amp;quot;{{ . }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ range .Site.Authors }}
+    {{ with .twitter }}
+      &amp;lt;meta name=&amp;quot;twitter:creator&amp;quot; content=&amp;quot;@{{ . }}&amp;quot;/&amp;gt;
+    {{ end }}
+  {{ end }}
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m still new to Go templating, but it seems to me that the &lt;code&gt;{{ with }}&lt;/code&gt; statement on the second line is missing an &lt;code&gt;{{ end }}&lt;/code&gt; tag.  If true, and once fixed, that would leave the index page without a &lt;code&gt;&amp;lt;meta name=&amp;ldquo;twitter:image&amp;rdquo; content=&amp;ldquo;{{ index . 0 | absURL }}&amp;rdquo;/&amp;gt;&lt;/code&gt; tag.  To fix this I ceated a partial template: &lt;code&gt;ROOT/layouts/seo/twitter.html&lt;/code&gt;.  Here&amp;rsquo;s where my adjustments brought me:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- layouts/partials/head.html --&amp;gt;
+{{ template &amp;quot;_internal/opengraph.html&amp;quot; . }}
+{{ template &amp;quot;_internal/google_news.html&amp;quot; . }}
+{{ template &amp;quot;_internal/schema.html&amp;quot; . }}
+{{ partial &amp;quot;seo/twitter.html&amp;quot; . }}
+
+&amp;lt;!-- layouts/partials/seo/twitter.html --&amp;gt;
+{{ if .IsPage }}
+  {{ with .Params.images }}
+  &amp;lt;!-- Twitter summary card with large image must be at least 280x150px --&amp;gt;
+    &amp;lt;meta name=&amp;quot;twitter:card&amp;quot; content=&amp;quot;summary_large_image&amp;quot;/&amp;gt;
+    &amp;lt;meta name=&amp;quot;twitter:image:src&amp;quot; content=&amp;quot;{{ index . 0 | absURL }}&amp;quot;/&amp;gt;
+    &amp;lt;meta name=&amp;quot;twitter:card&amp;quot; content=&amp;quot;summary&amp;quot;/&amp;gt;
+  {{ end }}
+  &amp;lt;!-- Twitter Card data --&amp;gt;
+  &amp;lt;meta name=&amp;quot;twitter:title&amp;quot; content=&amp;quot;{{ .Title }}&amp;quot;/&amp;gt;
+  &amp;lt;meta name=&amp;quot;twitter:description&amp;quot; content=&amp;quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&amp;quot;/&amp;gt;
+  {{ with .Site.Social.twitter }}
+    &amp;lt;meta name=&amp;quot;twitter:site&amp;quot; content=&amp;quot;@{{ . }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ with .Site.Social.twitter_domain }}
+    &amp;lt;meta name=&amp;quot;twitter:domain&amp;quot; content=&amp;quot;{{ . }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ range .Site.Authors }}
+    {{ with .twitter }}
+      &amp;lt;meta name=&amp;quot;twitter:creator&amp;quot; content=&amp;quot;@{{ . }}&amp;quot;/&amp;gt;
+    {{ end }}
+  {{ end }}
+{{ else }}
+  &amp;lt;meta name=&amp;quot;twitter:card&amp;quot; content=&amp;quot;summary&amp;quot; /&amp;gt;
+  {{ with .Site.Social.twitter }}
+    &amp;lt;meta name=&amp;quot;twitter:site&amp;quot; content=&amp;quot;@{{ . }}&amp;quot;/&amp;gt;
+  {{ end }}
+  &amp;lt;meta name=&amp;quot;twitter:title&amp;quot; content=&amp;quot;{{ .Title }}&amp;quot;/&amp;gt;
+  &amp;lt;meta name=&amp;quot;twitter:description&amp;quot; content=&amp;quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&amp;quot;/&amp;gt;
+  {{ with .Site.Params.images }}
+    {{ range first 6 . }}
+      &amp;lt;meta name=&amp;quot;twitter:image&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+    {{ end }}
+  {{ end }}
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you choose to do the same or make our own modifications, don&amp;rsquo;t hesitate to test them with Twitter&amp;rsquo;s &lt;a href=&#34;https://cards-dev.twitter.com/validator&#34;&gt;card validator&lt;/a&gt;.  Hopefully it turns out beautifully.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://brendan-quinn.xyz/css/images/twitter-card-validator.jpg&#34; alt=&#34;Successful Twitter Card Validation&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All the Best,&lt;/p&gt;
+
+&lt;p&gt;Brendan&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

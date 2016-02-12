@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>SRI Inc. | Brendan Quinn</title>
+    <title>Working with Hugo&#39;s Internal Partial Templates: twitter-cards | Brendan Quinn</title>
     <meta name="generator" content="Hugo 0.15" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Brendan Quinn">
     
-      <meta name="description" content="Wordpress blog for SRI Inc.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery.">
+      <meta name="description" content="Find, investigate and change Hugo&#39;s internal templates, twitter cards edition.">
     
     
     <link rel="icon" href="http://brendan-quinn.xyz/favicon.ico">
     <link rel="apple-touch-icon" href="http://brendan-quinn.xyz/apple-touch-icon.png" />
-    <meta property="og:title" content="SRI Inc." />
-<meta property="og:description" content="Wordpress blog for SRI Inc.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery." />
+    <meta property="og:title" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" />
+<meta property="og:description" content="Find, investigate and change Hugo&#39;s internal templates, twitter cards edition." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://brendan-quinn.xyz/work/sriservice/" />
+<meta property="og:url" content="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" />
 
+  
+    
+      <meta property="og:image" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg" />
+    
   
 
 
-  <meta property="og:updated_time" content="2016-02-04T09:49:50-05:00"/>
+  <meta property="og:updated_time" content="2016-02-12T03:01:40-05:00"/>
 
 
 
@@ -40,12 +44,14 @@
 
     
     
-<meta itemprop="name" content="SRI Inc.">
-<meta itemprop="description" content="Wordpress blog for SRI Inc.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery.">
+<meta itemprop="name" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards">
+<meta itemprop="description" content="Find, investigate and change Hugo&#39;s internal templates, twitter cards edition.">
 
 
-<meta itemprop="dateModified" content="2016-02-04T09:49:50-05:00" />
-<meta itemprop="wordCount" content="17">
+<meta itemprop="dateModified" content="2016-02-12T03:01:40-05:00" />
+<meta itemprop="wordCount" content="523">
+
+  <meta itemprop="image" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg">
 
 
 
@@ -54,8 +60,13 @@
     
   
   
-  <meta name="twitter:title" content="SRI Inc."/>
-  <meta name="twitter:description" content="Wordpress blog for SRI Inc.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery."/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg"/>
+    <meta name="twitter:card" content="summary"/>
+  
+  
+  <meta name="twitter:title" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards"/>
+  <meta name="twitter:description" content="Find, investigate and change Hugo&#39;s internal templates, twitter cards edition."/>
   
     <meta name="twitter:site" content="@Mathdrquinn"/>
   
@@ -246,45 +257,156 @@
         <div class="article-inner">
             
                 
-                <img src="http://brendan-quinn.xyz/css/images/work/sriservices.jpg" class="article-banner" alt="SRI Inc.">
+                <img src="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg" class="article-banner" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards">
                 
             
 
             <header class="article-header">
-    <a href="http://brendan-quinn.xyz/work/sriservice/">
+    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards">
     <h1 class="article-title" itemprop="name">
-        SRI Inc.
+        Working with Hugo&#39;s Internal Partial Templates: twitter-cards
     </h1>
     </a>
     <div class="article-meta">
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2016-02-04 09:49:50 -0500 EST" itemprop="datePublished">February 04 2016 @ 09:49AM</time>
+            <time datetime="2016-02-12 03:01:40 -0500 EST" itemprop="datePublished">February 12 2016 @ 03:01AM</time>
             &middot;
-            17
+            523
             words
             &middot;
-            1
+            3
             minute read
         </div>
 
         
         
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                <a class="article-category-link" href="http://brendan-quinn.xyz/categories/seo">SEO</a>
+                
+                
+            </div>
+            
+        
 
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/seo">SEO</a>
+                &middot;
+                
+                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/hugo">Hugo</a>
+                
+                
+            </div>
+            
         
     </div>
 </header>
 
             <div class="article-entry" itemprop="articleBody">
-                <p>Wordpress blog for <a href="http://www.sriservices.com">SRI Inc</a>.  Built custom child theme.  Utilized a gulp build process, Sass, and jQuery</p>
+                <p>Hugo&rsquo;s internal template are neat and helpful.  They are templates that <a href="https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go">live within hugo</a> and can be referenced similar to other templates.</p>
+
+<pre><code class="language-html">{{ template &quot;_internal/opengraph.html&quot; . }}
+{{ template &quot;_internal/google_news.html&quot; . }}
+{{ template &quot;_internal/schema.html&quot; . }}
+{{ template &quot;_internal/twitter_cards.html&quot; . }}
+</code></pre>
+
+<p>As I developed this blog with Hugo&rsquo;s help, I needed to dive into the <code>_internal/twitter_cards.html</code> template to make sure I had my <code>config.toml</code> set up correctly.  That search led me <a href="https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go#L147">here</a>.  While helpful, I think it is still in alpha.</p>
+
+<pre><code class="language-html">{{ if .IsPage }}
+  {{ with .Params.images }}
+    &lt;!-- Twitter summary card with large image must be at least 280x150px --&gt;
+    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;
+    &lt;meta name=&quot;twitter:image:src&quot; content=&quot;{{ index . 0 | absURL }}&quot;/&gt;
+{{ else }}
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;/&gt;
+{{ end }}
+  &lt;!-- Twitter Card data --&gt;
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
+  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
+  {{ with .Site.Social.twitter }}
+    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
+  {{ end }}
+  {{ with .Site.Social.twitter_domain }}
+    &lt;meta name=&quot;twitter:domain&quot; content=&quot;{{ . }}&quot;/&gt;
+  {{ end }}
+  {{ range .Site.Authors }}
+    {{ with .twitter }}
+      &lt;meta name=&quot;twitter:creator&quot; content=&quot;@{{ . }}&quot;/&gt;
+    {{ end }}
+  {{ end }}
+{{ end }}
+</code></pre>
+
+<p>I&rsquo;m still new to Go templating, but it seems to me that the <code>{{ with }}</code> statement on the second line is missing an <code>{{ end }}</code> tag.  If true, and once fixed, that would leave the index page without a <code>&lt;meta name=&ldquo;twitter:image&rdquo; content=&ldquo;{{ index . 0 | absURL }}&rdquo;/&gt;</code> tag.  To fix this I ceated a partial template: <code>ROOT/layouts/seo/twitter.html</code>.  Here&rsquo;s where my adjustments brought me:</p>
+
+<pre><code class="language-html">&lt;!-- layouts/partials/head.html --&gt;
+{{ template &quot;_internal/opengraph.html&quot; . }}
+{{ template &quot;_internal/google_news.html&quot; . }}
+{{ template &quot;_internal/schema.html&quot; . }}
+{{ partial &quot;seo/twitter.html&quot; . }}
+
+&lt;!-- layouts/partials/seo/twitter.html --&gt;
+{{ if .IsPage }}
+  {{ with .Params.images }}
+  &lt;!-- Twitter summary card with large image must be at least 280x150px --&gt;
+    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;
+    &lt;meta name=&quot;twitter:image:src&quot; content=&quot;{{ index . 0 | absURL }}&quot;/&gt;
+    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;/&gt;
+  {{ end }}
+  &lt;!-- Twitter Card data --&gt;
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
+  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
+  {{ with .Site.Social.twitter }}
+    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
+  {{ end }}
+  {{ with .Site.Social.twitter_domain }}
+    &lt;meta name=&quot;twitter:domain&quot; content=&quot;{{ . }}&quot;/&gt;
+  {{ end }}
+  {{ range .Site.Authors }}
+    {{ with .twitter }}
+      &lt;meta name=&quot;twitter:creator&quot; content=&quot;@{{ . }}&quot;/&gt;
+    {{ end }}
+  {{ end }}
+{{ else }}
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
+  {{ with .Site.Social.twitter }}
+    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
+  {{ end }}
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
+  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
+  {{ with .Site.Params.images }}
+    {{ range first 6 . }}
+      &lt;meta name=&quot;twitter:image&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+    {{ end }}
+  {{ end }}
+{{ end }}
+</code></pre>
+
+<p>If you choose to do the same or make our own modifications, don&rsquo;t hesitate to test them with Twitter&rsquo;s <a href="https://cards-dev.twitter.com/validator">card validator</a>.  Hopefully it turns out beautifully.</p>
+
+<p><img src="http://brendan-quinn.xyz/css/images/twitter-card-validator.jpg" alt="Successful Twitter Card Validation" /></p>
+
+<p>All the Best,</p>
+
+<p>Brendan</p>
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://brendan-quinn.xyz/work/sriservice/" data-id="9fddfa6c51b5cf9ebeaca11f7ba88584" class="article-share-link">
+    <a data-url="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" data-id="83d248d0a04c0674b6ef6a8edc16122d" class="article-share-link">
         Share
     </a>
     
-    <a href="http://brendan-quinn.xyz/work/sriservice//#disqus_thread" class="article-comment-link">
+    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -295,21 +417,14 @@
         
 <nav id="article-nav">
     
-    <a href="http://brendan-quinn.xyz/work/sunglassharehouse/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://brendan-quinn.xyz/post/using-html5-and-media-queries-for-responsive-images" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Sunglasswarehouse Blog</div>
+      <div class="article-nav-title">Using HTML5 and Media Queries for Responsive Images</div>
     </a>
     
 
-    
-    <a href="http://brendan-quinn.xyz/work/readers/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Readers.com Blog</div>
-    </a>
     
 </nav>
 
@@ -320,9 +435,9 @@
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'brendanquinn';
-    var disqus_identifier = 'http:\/\/brendan-quinn.xyz\/work\/sriservice\/';
-    var disqus_title = 'SRI Inc.';
-    var disqus_url = 'http:\/\/brendan-quinn.xyz\/work\/sriservice\/';
+    var disqus_identifier = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-twitter-cards';
+    var disqus_title = 'Working with Hugo\x27s Internal Partial Templates: twitter-cards';
+    var disqus_url = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-twitter-cards';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -351,7 +466,7 @@
                     <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg)" alt="SRI Inc." class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -376,7 +491,7 @@
                     <a href="http://brendan-quinn.xyz/post/using-html5-and-media-queries-for-responsive-images" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape.jpg)" alt="SRI Inc." class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -401,7 +516,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="SRI Inc." class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -426,7 +541,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="SRI Inc." class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
                         
                     
                     </a>
