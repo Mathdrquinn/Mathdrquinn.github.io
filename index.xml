@@ -10,12 +10,220 @@
     <atom:link href="http://brendan-quinn.xyz/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph</title>
+      <link>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph</link>
+      <pubDate>Fri, 12 Feb 2016 03:01:40 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph</guid>
+      <description>&lt;p&gt;Hugo&amp;rsquo;s internal templates are a thoughtful idea, &lt;a href=&#34;http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards/&#34;&gt;as I discussed earlier&lt;/a&gt;, but it is important to check out the &lt;a href=&#34;live within hugo](https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go&#34;&gt;source code&lt;/a&gt; in order to be cognizant that you are making the most out of the helper-template.  In supplementing the &lt;a href=&#34;http://themes.gohugo.io/theme/hugo-icarus/&#34;&gt;theme&lt;/a&gt; this blog is built on, I saw my meta data wasn&amp;rsquo;t filling out or seemed to have some missing chunks.  After investigating the source code, part of the issue was that I wasn&amp;rsquo;t defining my config files correctly.  Once updated, they got me a bit farther.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- config.toml --&amp;gt;
+...
+[params]
+  author = &amp;quot;Brendan Quinn&amp;quot;
+  description = &amp;quot;Hey there, I&#39;m Brendan Quinn, an energetic introvert with a love of family, walking/hiking, listening, teaching, and code.&amp;quot;
+  site_description = &amp;quot;Hey there, I&#39;m Brendan Quinn, an energetic introvert with a love of family, walking/hiking, listening, teaching, and code.&amp;quot;
+  images = [&amp;quot;http://brendan-quinn.xyz/css/images/Brendan-Quinn-seo.jpg&amp;quot;]
+...
+[social]
+...
+  facebook        = &amp;quot;quinn.197&amp;quot;
+  facebook_admin  = &amp;quot;&amp;quot;
+  facebook_app_id = &amp;quot;&amp;lt;!-- Get from the FB Dev Page --&amp;gt;&amp;quot;
+...
+
+&amp;lt;!-- content/post/using-html5-responsive-images.md --&amp;gt;
++++
+banner = &amp;quot;css/images/banners/responsive-images-landscape.jpg&amp;quot;
+categories = [&amp;quot;Responsive Design&amp;quot;]
+date = &amp;quot;2016-02-09T16:30:47-05:00&amp;quot;
+description = &amp;quot;Using &amp;amp;lt;picture&amp;amp;gt; &amp;amp;lt;source&amp;amp;gt; and &amp;amp;lt;img&amp;amp;gt; HTML5 elements combined with the \&amp;quot;media\&amp;quot;, \&amp;quot;srcset\&amp;quot;, and \&amp;quot;size\&amp;quot; attributes, it is possible and even necessary to make responsive images for your users.&amp;quot;
+images = [&amp;quot;http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape-seo.jpg&amp;quot;]
+menu = &amp;quot;&amp;quot;
+tags = [&amp;quot;CSS&amp;quot;, &amp;quot;HTML5&amp;quot;]
+title = &amp;quot;Using HTML5 and Media Queries for Responsive Images&amp;quot;
+
+[params]
+  bannerLg = &amp;quot;css/images/banners/responsive-images-landscape-lg.jpg&amp;quot;
+  bannerMd = &amp;quot;css/images/banners/responsive-images-landscape-md.jpg&amp;quot;
+  bannerSm = &amp;quot;css/images/banners/responsive-images-landscape-sm.jpg&amp;quot;
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While this filled out some more fields one compiled, this didn&amp;rsquo;t get me all the way there.  So I made a supplemental partial template for facebook and open graph meta elements.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- the old --&amp;gt;
+
+  &amp;lt;!-- themes/theme/layouts/partials/head.html --&amp;gt;
+  {{ template &amp;quot;_internal/opengraph.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/google_news.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/schema.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/twitter_cards.html&amp;quot; . }}
+
+  &amp;lt;!-- internal partial --&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;{{ .Title }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;{{ if .IsPage }}article{{ else }}website{{ end }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;{{ .Permalink }}&amp;quot; /&amp;gt;
+  {{ with .Params.images }}
+    {{ range first 6 . }}
+      &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+    {{ end }}
+  {{ end }}
+  {{ if not .Date.IsZero }}
+    &amp;lt;meta property=&amp;quot;og:updated_time&amp;quot; content=&amp;quot;{{ .Date.Format &amp;quot;2006-01-02T15:04:05-07:00&amp;quot; | safeHTML }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ with .Params.audio }}
+    &amp;lt;meta property=&amp;quot;og:audio&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Params.locale }}
+    &amp;lt;meta property=&amp;quot;og:locale&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Site.Params.title }}
+    &amp;lt;meta property=&amp;quot;og:site_name&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Params.videos }}
+    {{ range .Params.videos }}
+      &amp;lt;meta property=&amp;quot;og:video&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+    {{ end }}
+  {{ end }}
+  &amp;lt;!-- If it is part of a series, link to related articles --&amp;gt;
+  {{ $permalink := .Permalink }}
+  {{ $siteSeries := .Site.Taxonomies.series }}
+    {{ with .Params.series }}
+      {{ range $name := . }}
+        {{ $series := index $siteSeries $name }}
+          {{ range $page := first 6 $series.Pages }}
+            {{ if ne $page.Permalink $permalink }}
+              &amp;lt;meta property=&amp;quot;og:see_also&amp;quot; content=&amp;quot;{{ $page.Permalink }}&amp;quot; /&amp;gt;
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if .IsPage }}
+        {{ range .Site.Authors }}
+          {{ with .Social.facebook }}
+            &amp;lt;meta property=&amp;quot;article:author&amp;quot; content=&amp;quot;https://www.facebook.com/{{ . }}&amp;quot; /&amp;gt;
+          {{ end }}
+          {{ with .Site.Social.facebook }}
+            &amp;lt;meta property=&amp;quot;article:publisher&amp;quot; content=&amp;quot;https://www.facebook.com/{{ . }}&amp;quot; /&amp;gt;
+          {{ end }}
+          &amp;lt;meta property=&amp;quot;article:published_time&amp;quot; content=&amp;quot;{{ .PublishDate }}&amp;quot; /&amp;gt;
+          &amp;lt;meta property=&amp;quot;article:modified_time&amp;quot; content=&amp;quot;{{ .Date }}&amp;quot; /&amp;gt;
+          &amp;lt;meta property=&amp;quot;article:section&amp;quot; content=&amp;quot;{{ .Section }}&amp;quot; /&amp;gt;
+          {{ with .Params.tags }}
+            {{ range first 6 . }}
+              &amp;lt;meta property=&amp;quot;article:tag&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      &amp;lt;!-- Facebook Page Admin ID for Domain Insights --&amp;gt;
+      {{ with .Site.Social.facebook_admin }}
+        &amp;lt;meta property=&amp;quot;fb:admins&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+      {{ end }}
+
+&amp;lt;!-- the new --&amp;gt;
+  &amp;lt;!-- layouts/partials/head.html --&amp;gt;
+  {{ partial &amp;quot;seo/og.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/google_news.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/schema.html&amp;quot; . }}
+  {{ template &amp;quot;_internal/twitter_cards.html&amp;quot; . }}
+
+  &amp;lt;!-- layouts/partials/seo/og.html --&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:title&amp;quot; content=&amp;quot;{{ .Title }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:description&amp;quot; content=&amp;quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:type&amp;quot; content=&amp;quot;{{ if .IsPage }}article{{ else }}website{{ end }}&amp;quot; /&amp;gt;
+  &amp;lt;meta property=&amp;quot;og:url&amp;quot; content=&amp;quot;{{ .Permalink }}&amp;quot; /&amp;gt;
+  {{ if .IsPage }}
+    {{ with .Params.images }}
+      {{ range first 6 . }}
+        &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ with .Site.Params.images }}
+      {{ range first 6 . }}
+        &amp;lt;meta property=&amp;quot;og:image&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not .Date.IsZero }}
+    &amp;lt;meta property=&amp;quot;og:updated_time&amp;quot; content=&amp;quot;{{ .Date.Format &amp;quot;2006-01-02T15:04:05-07:00&amp;quot; | safeHTML }}&amp;quot;/&amp;gt;
+  {{ end }}
+  {{ with .Params.audio }}
+    &amp;lt;meta property=&amp;quot;og:audio&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Params.locale }}
+    &amp;lt;meta property=&amp;quot;og:locale&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Site.Params.title }}
+    &amp;lt;meta property=&amp;quot;og:site_name&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+  {{ end }}
+  {{ with .Params.videos }}
+    {{ range .Params.videos }}
+      &amp;lt;meta property=&amp;quot;og:video&amp;quot; content=&amp;quot;{{ . | absURL }}&amp;quot; /&amp;gt;
+    {{ end }}
+  {{ end }}
+  &amp;lt;!-- If it is part of a series, link to related articles --&amp;gt;
+  {{ $permalink := .Permalink }}
+  {{ $siteSeries := .Site.Taxonomies.series }}
+  {{ with .Params.series }}
+    {{ range $name := . }}
+      {{ $series := index $siteSeries $name }}
+        {{ range $page := first 6 $series.Pages }}
+          {{ if ne $page.Permalink $permalink }}
+            &amp;lt;meta property=&amp;quot;og:see_also&amp;quot; content=&amp;quot;{{ $page.Permalink }}&amp;quot; /&amp;gt;
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if .IsPage }}
+      {{ range .Site.Authors }}
+        {{ with .Social.facebook }}
+          &amp;lt;meta property=&amp;quot;article:author&amp;quot; content=&amp;quot;https://www.facebook.com/{{ . }}&amp;quot; /&amp;gt;
+        {{ end }}
+        {{ with .Site.Social.facebook }}
+          &amp;lt;meta property=&amp;quot;article:publisher&amp;quot; content=&amp;quot;https://www.facebook.com/{{ . }}&amp;quot; /&amp;gt;
+        {{ end }}
+        &amp;lt;meta property=&amp;quot;article:published_time&amp;quot; content=&amp;quot;{{ .PublishDate }}&amp;quot; /&amp;gt;
+        &amp;lt;meta property=&amp;quot;article:modified_time&amp;quot; content=&amp;quot;{{ .Date }}&amp;quot; /&amp;gt;
+        &amp;lt;meta property=&amp;quot;article:section&amp;quot; content=&amp;quot;{{ .Section }}&amp;quot; /&amp;gt;
+        {{ with .Params.tags }}
+          {{ range first 6 . }}
+            &amp;lt;meta property=&amp;quot;article:tag&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    &amp;lt;!-- Facebook Page Admin ID for Domain Insights --&amp;gt;
+    {{ with .Site.Social.facebook_admin }}
+      &amp;lt;meta property=&amp;quot;fb:admins&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+    {{ end }}
+    {{ with .Site.Social.facebook_app_id }}
+      &amp;lt;meta property=&amp;quot;fb:app_id&amp;quot; content=&amp;quot;{{ . }}&amp;quot; /&amp;gt;
+    {{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see I still have some work to do here.  Even after cleaning it up and making some small changes to &lt;code&gt;og:image&lt;/code&gt;  I still think this is one &lt;code&gt;{{ end }}&lt;/code&gt; tag away from complete.  But, hey, during testing it worked out, so I will continue to play and update this post if any new information comes to light.&lt;/p&gt;
+
+&lt;p&gt;Oh, and as always, don&amp;rsquo;t forget to test your meta data with facebook&amp;rsquo;s &lt;a href=&#34;https://developers.facebook.com/tools/debug/og/object/&#34;&gt;Open Graph Object Debugger&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://brendan-quinn.xyz/css/images/facebook-open-graph-debugger.jpg&#34; alt=&#34;Facebooks Open Graph Debugger&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All the Best,&lt;/p&gt;
+
+&lt;p&gt;Brendan&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Working with Hugo&#39;s Internal Partial Templates: twitter-cards</title>
       <link>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards</link>
       <pubDate>Fri, 12 Feb 2016 03:01:40 -0500</pubDate>
       
       <guid>http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards</guid>
-      <description>&lt;p&gt;Hugo&amp;rsquo;s internal template are neat and helpful.  They are templates that &lt;a href=&#34;https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go&#34;&gt;live within hugo&lt;/a&gt; and can be referenced similar to other templates.&lt;/p&gt;
+      <description>&lt;p&gt;Hugo&amp;rsquo;s internal templates are neat and helpful.  They are templates that &lt;a href=&#34;https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go&#34;&gt;live within hugo&lt;/a&gt; and can be referenced similar to other templates.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{{ template &amp;quot;_internal/opengraph.html&amp;quot; . }}
 {{ template &amp;quot;_internal/google_news.html&amp;quot; . }}

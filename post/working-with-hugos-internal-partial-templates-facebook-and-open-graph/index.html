@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Working with Hugo&#39;s Internal Partial Templates: twitter-cards | Brendan Quinn</title>
+    <title>Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph | Brendan Quinn</title>
     <meta name="generator" content="Hugo 0.15" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Brendan Quinn">
     
-      <meta name="description" content="Find, investigate, and change Hugo&#39;s internal templates, twitter cards edition.">
+      <meta name="description" content="Find, investigate, and change Hugo&#39;s internal templates, open graph and facebook edition.">
     
     
     <link rel="icon" href="http://brendan-quinn.xyz/favicon.ico">
     <link rel="apple-touch-icon" href="http://brendan-quinn.xyz/apple-touch-icon.png" />
-    <meta property="og:title" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" />
-<meta property="og:description" content="Find, investigate, and change Hugo&#39;s internal templates, twitter cards edition." />
+    <meta property="og:title" content="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" />
+<meta property="og:description" content="Find, investigate, and change Hugo&#39;s internal templates, open graph and facebook edition." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" />
+<meta property="og:url" content="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph" />
 
   
     
-      <meta property="og:image" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg" />
+      <meta property="og:image" content="http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-seo.jpg" />
     
   
 
@@ -44,14 +44,14 @@
 
     
     
-<meta itemprop="name" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards">
-<meta itemprop="description" content="Find, investigate, and change Hugo&#39;s internal templates, twitter cards edition.">
+<meta itemprop="name" content="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph">
+<meta itemprop="description" content="Find, investigate, and change Hugo&#39;s internal templates, open graph and facebook edition.">
 
 
 <meta itemprop="dateModified" content="2016-02-12T03:01:40-05:00" />
-<meta itemprop="wordCount" content="523">
+<meta itemprop="wordCount" content="1104">
 
-  <meta itemprop="image" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg">
+  <meta itemprop="image" content="http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-seo.jpg">
 
 
 
@@ -61,12 +61,12 @@
   
   
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-seo.jpg"/>
+    <meta name="twitter:image:src" content="http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-seo.jpg"/>
     <meta name="twitter:card" content="summary"/>
   
   
-  <meta name="twitter:title" content="Working with Hugo&#39;s Internal Partial Templates: twitter-cards"/>
-  <meta name="twitter:description" content="Find, investigate, and change Hugo&#39;s internal templates, twitter cards edition."/>
+  <meta name="twitter:title" content="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph"/>
+  <meta name="twitter:description" content="Find, investigate, and change Hugo&#39;s internal templates, open graph and facebook edition."/>
   
     <meta name="twitter:site" content="@Mathdrquinn"/>
   
@@ -257,14 +257,14 @@
         <div class="article-inner">
             
                 
-                <img src="http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg" class="article-banner" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards">
+                <img src="http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-lg.jpg" class="article-banner" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph">
                 
             
 
             <header class="article-header">
-    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards">
+    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph">
     <h1 class="article-title" itemprop="name">
-        Working with Hugo&#39;s Internal Partial Templates: twitter-cards
+        Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph
     </h1>
     </a>
     <div class="article-meta">
@@ -272,10 +272,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2016-02-12 03:01:40 -0500 EST" itemprop="datePublished">February 12 2016 @ 03:01AM</time>
             &middot;
-            523
+            1104
             words
             &middot;
-            3
+            6
             minute read
         </div>
 
@@ -303,6 +303,12 @@
                 &middot;
                 
                 <a class="article-category-link" href="http://brendan-quinn.xyz/tags/hugo">Hugo</a>
+                &middot;
+                
+                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/facebook">facebook</a>
+                &middot;
+                
+                <a class="article-category-link" href="http://brendan-quinn.xyz/tags/open-graph">Open Graph</a>
                 
                 
             </div>
@@ -312,89 +318,201 @@
 </header>
 
             <div class="article-entry" itemprop="articleBody">
-                <p>Hugo&rsquo;s internal templates are neat and helpful.  They are templates that <a href="https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go">live within hugo</a> and can be referenced similar to other templates.</p>
+                <p>Hugo&rsquo;s internal templates are a thoughtful idea, <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards/">as I discussed earlier</a>, but it is important to check out the <a href="live within hugo](https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go">source code</a> in order to be cognizant that you are making the most out of the helper-template.  In supplementing the <a href="http://themes.gohugo.io/theme/hugo-icarus/">theme</a> this blog is built on, I saw my meta data wasn&rsquo;t filling out or seemed to have some missing chunks.  After investigating the source code, part of the issue was that I wasn&rsquo;t defining my config files correctly.  Once updated, they got me a bit farther.</p>
 
-<pre><code class="language-html">{{ template &quot;_internal/opengraph.html&quot; . }}
-{{ template &quot;_internal/google_news.html&quot; . }}
-{{ template &quot;_internal/schema.html&quot; . }}
-{{ template &quot;_internal/twitter_cards.html&quot; . }}
+<pre><code class="language-html">&lt;!-- config.toml --&gt;
+...
+[params]
+  author = &quot;Brendan Quinn&quot;
+  description = &quot;Hey there, I'm Brendan Quinn, an energetic introvert with a love of family, walking/hiking, listening, teaching, and code.&quot;
+  site_description = &quot;Hey there, I'm Brendan Quinn, an energetic introvert with a love of family, walking/hiking, listening, teaching, and code.&quot;
+  images = [&quot;http://brendan-quinn.xyz/css/images/Brendan-Quinn-seo.jpg&quot;]
+...
+[social]
+...
+  facebook        = &quot;quinn.197&quot;
+  facebook_admin  = &quot;&quot;
+  facebook_app_id = &quot;&lt;!-- Get from the FB Dev Page --&gt;&quot;
+...
+
+&lt;!-- content/post/using-html5-responsive-images.md --&gt;
++++
+banner = &quot;css/images/banners/responsive-images-landscape.jpg&quot;
+categories = [&quot;Responsive Design&quot;]
+date = &quot;2016-02-09T16:30:47-05:00&quot;
+description = &quot;Using &amp;lt;picture&amp;gt; &amp;lt;source&amp;gt; and &amp;lt;img&amp;gt; HTML5 elements combined with the \&quot;media\&quot;, \&quot;srcset\&quot;, and \&quot;size\&quot; attributes, it is possible and even necessary to make responsive images for your users.&quot;
+images = [&quot;http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape-seo.jpg&quot;]
+menu = &quot;&quot;
+tags = [&quot;CSS&quot;, &quot;HTML5&quot;]
+title = &quot;Using HTML5 and Media Queries for Responsive Images&quot;
+
+[params]
+  bannerLg = &quot;css/images/banners/responsive-images-landscape-lg.jpg&quot;
+  bannerMd = &quot;css/images/banners/responsive-images-landscape-md.jpg&quot;
+  bannerSm = &quot;css/images/banners/responsive-images-landscape-sm.jpg&quot;
++++
 </code></pre>
 
-<p>As I developed this blog with Hugo&rsquo;s help, I needed to dive into the <code>_internal/twitter_cards.html</code> template to make sure I had my <code>config.toml</code> set up correctly.  That search led me <a href="https://github.com/spf13/hugo/blob/e445c35d6a0c7f5fc2f90f31226cd1d46e048bbc/tpl/template_embedded.go#L147">here</a>.  While helpful, I think it is still in alpha.</p>
+<p>While this filled out some more fields one compiled, this didn&rsquo;t get me all the way there.  So I made a supplemental partial template for facebook and open graph meta elements.</p>
 
-<pre><code class="language-html">{{ if .IsPage }}
+<pre><code class="language-html">&lt;!-- the old --&gt;
+
+  &lt;!-- themes/theme/layouts/partials/head.html --&gt;
+  {{ template &quot;_internal/opengraph.html&quot; . }}
+  {{ template &quot;_internal/google_news.html&quot; . }}
+  {{ template &quot;_internal/schema.html&quot; . }}
+  {{ template &quot;_internal/twitter_cards.html&quot; . }}
+
+  &lt;!-- internal partial --&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{{ .Title }}&quot; /&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot; /&gt;
+  &lt;meta property=&quot;og:type&quot; content=&quot;{{ if .IsPage }}article{{ else }}website{{ end }}&quot; /&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;{{ .Permalink }}&quot; /&gt;
   {{ with .Params.images }}
-    &lt;!-- Twitter summary card with large image must be at least 280x150px --&gt;
-    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;
-    &lt;meta name=&quot;twitter:image:src&quot; content=&quot;{{ index . 0 | absURL }}&quot;/&gt;
-{{ else }}
-  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;/&gt;
-{{ end }}
-  &lt;!-- Twitter Card data --&gt;
-  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
-  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
-  {{ with .Site.Social.twitter }}
-    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
-  {{ end }}
-  {{ with .Site.Social.twitter_domain }}
-    &lt;meta name=&quot;twitter:domain&quot; content=&quot;{{ . }}&quot;/&gt;
-  {{ end }}
-  {{ range .Site.Authors }}
-    {{ with .twitter }}
-      &lt;meta name=&quot;twitter:creator&quot; content=&quot;@{{ . }}&quot;/&gt;
-    {{ end }}
-  {{ end }}
-{{ end }}
-</code></pre>
-
-<p>I&rsquo;m still new to Go templating, but it seems to me that the <code>{{ with }}</code> statement on the second line is missing an <code>{{ end }}</code> tag.  If true, and once fixed, that would leave the index page without a <code>&lt;meta name=&ldquo;twitter:image&rdquo; content=&ldquo;{{ index . 0 | absURL }}&rdquo;/&gt;</code> tag.  To fix this I ceated a partial template: <code>ROOT/layouts/seo/twitter.html</code>.  Here&rsquo;s where my adjustments brought me:</p>
-
-<pre><code class="language-html">&lt;!-- layouts/partials/head.html --&gt;
-{{ template &quot;_internal/opengraph.html&quot; . }}
-{{ template &quot;_internal/google_news.html&quot; . }}
-{{ template &quot;_internal/schema.html&quot; . }}
-{{ partial &quot;seo/twitter.html&quot; . }}
-
-&lt;!-- layouts/partials/seo/twitter.html --&gt;
-{{ if .IsPage }}
-  {{ with .Params.images }}
-  &lt;!-- Twitter summary card with large image must be at least 280x150px --&gt;
-    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;/&gt;
-    &lt;meta name=&quot;twitter:image:src&quot; content=&quot;{{ index . 0 | absURL }}&quot;/&gt;
-    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;/&gt;
-  {{ end }}
-  &lt;!-- Twitter Card data --&gt;
-  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
-  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
-  {{ with .Site.Social.twitter }}
-    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
-  {{ end }}
-  {{ with .Site.Social.twitter_domain }}
-    &lt;meta name=&quot;twitter:domain&quot; content=&quot;{{ . }}&quot;/&gt;
-  {{ end }}
-  {{ range .Site.Authors }}
-    {{ with .twitter }}
-      &lt;meta name=&quot;twitter:creator&quot; content=&quot;@{{ . }}&quot;/&gt;
-    {{ end }}
-  {{ end }}
-{{ else }}
-  &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot; /&gt;
-  {{ with .Site.Social.twitter }}
-    &lt;meta name=&quot;twitter:site&quot; content=&quot;@{{ . }}&quot;/&gt;
-  {{ end }}
-  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{ .Title }}&quot;/&gt;
-  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot;/&gt;
-  {{ with .Site.Params.images }}
     {{ range first 6 . }}
-      &lt;meta name=&quot;twitter:image&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+      &lt;meta property=&quot;og:image&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
     {{ end }}
   {{ end }}
-{{ end }}
+  {{ if not .Date.IsZero }}
+    &lt;meta property=&quot;og:updated_time&quot; content=&quot;{{ .Date.Format &quot;2006-01-02T15:04:05-07:00&quot; | safeHTML }}&quot;/&gt;
+  {{ end }}
+  {{ with .Params.audio }}
+    &lt;meta property=&quot;og:audio&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Params.locale }}
+    &lt;meta property=&quot;og:locale&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Site.Params.title }}
+    &lt;meta property=&quot;og:site_name&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Params.videos }}
+    {{ range .Params.videos }}
+      &lt;meta property=&quot;og:video&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+    {{ end }}
+  {{ end }}
+  &lt;!-- If it is part of a series, link to related articles --&gt;
+  {{ $permalink := .Permalink }}
+  {{ $siteSeries := .Site.Taxonomies.series }}
+    {{ with .Params.series }}
+      {{ range $name := . }}
+        {{ $series := index $siteSeries $name }}
+          {{ range $page := first 6 $series.Pages }}
+            {{ if ne $page.Permalink $permalink }}
+              &lt;meta property=&quot;og:see_also&quot; content=&quot;{{ $page.Permalink }}&quot; /&gt;
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if .IsPage }}
+        {{ range .Site.Authors }}
+          {{ with .Social.facebook }}
+            &lt;meta property=&quot;article:author&quot; content=&quot;https://www.facebook.com/{{ . }}&quot; /&gt;
+          {{ end }}
+          {{ with .Site.Social.facebook }}
+            &lt;meta property=&quot;article:publisher&quot; content=&quot;https://www.facebook.com/{{ . }}&quot; /&gt;
+          {{ end }}
+          &lt;meta property=&quot;article:published_time&quot; content=&quot;{{ .PublishDate }}&quot; /&gt;
+          &lt;meta property=&quot;article:modified_time&quot; content=&quot;{{ .Date }}&quot; /&gt;
+          &lt;meta property=&quot;article:section&quot; content=&quot;{{ .Section }}&quot; /&gt;
+          {{ with .Params.tags }}
+            {{ range first 6 . }}
+              &lt;meta property=&quot;article:tag&quot; content=&quot;{{ . }}&quot; /&gt;
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      &lt;!-- Facebook Page Admin ID for Domain Insights --&gt;
+      {{ with .Site.Social.facebook_admin }}
+        &lt;meta property=&quot;fb:admins&quot; content=&quot;{{ . }}&quot; /&gt;
+      {{ end }}
+
+&lt;!-- the new --&gt;
+  &lt;!-- layouts/partials/head.html --&gt;
+  {{ partial &quot;seo/og.html&quot; . }}
+  {{ template &quot;_internal/google_news.html&quot; . }}
+  {{ template &quot;_internal/schema.html&quot; . }}
+  {{ template &quot;_internal/twitter_cards.html&quot; . }}
+
+  &lt;!-- layouts/partials/seo/og.html --&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{{ .Title }}&quot; /&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}&quot; /&gt;
+  &lt;meta property=&quot;og:type&quot; content=&quot;{{ if .IsPage }}article{{ else }}website{{ end }}&quot; /&gt;
+  &lt;meta property=&quot;og:url&quot; content=&quot;{{ .Permalink }}&quot; /&gt;
+  {{ if .IsPage }}
+    {{ with .Params.images }}
+      {{ range first 6 . }}
+        &lt;meta property=&quot;og:image&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ with .Site.Params.images }}
+      {{ range first 6 . }}
+        &lt;meta property=&quot;og:image&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not .Date.IsZero }}
+    &lt;meta property=&quot;og:updated_time&quot; content=&quot;{{ .Date.Format &quot;2006-01-02T15:04:05-07:00&quot; | safeHTML }}&quot;/&gt;
+  {{ end }}
+  {{ with .Params.audio }}
+    &lt;meta property=&quot;og:audio&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Params.locale }}
+    &lt;meta property=&quot;og:locale&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Site.Params.title }}
+    &lt;meta property=&quot;og:site_name&quot; content=&quot;{{ . }}&quot; /&gt;
+  {{ end }}
+  {{ with .Params.videos }}
+    {{ range .Params.videos }}
+      &lt;meta property=&quot;og:video&quot; content=&quot;{{ . | absURL }}&quot; /&gt;
+    {{ end }}
+  {{ end }}
+  &lt;!-- If it is part of a series, link to related articles --&gt;
+  {{ $permalink := .Permalink }}
+  {{ $siteSeries := .Site.Taxonomies.series }}
+  {{ with .Params.series }}
+    {{ range $name := . }}
+      {{ $series := index $siteSeries $name }}
+        {{ range $page := first 6 $series.Pages }}
+          {{ if ne $page.Permalink $permalink }}
+            &lt;meta property=&quot;og:see_also&quot; content=&quot;{{ $page.Permalink }}&quot; /&gt;
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if .IsPage }}
+      {{ range .Site.Authors }}
+        {{ with .Social.facebook }}
+          &lt;meta property=&quot;article:author&quot; content=&quot;https://www.facebook.com/{{ . }}&quot; /&gt;
+        {{ end }}
+        {{ with .Site.Social.facebook }}
+          &lt;meta property=&quot;article:publisher&quot; content=&quot;https://www.facebook.com/{{ . }}&quot; /&gt;
+        {{ end }}
+        &lt;meta property=&quot;article:published_time&quot; content=&quot;{{ .PublishDate }}&quot; /&gt;
+        &lt;meta property=&quot;article:modified_time&quot; content=&quot;{{ .Date }}&quot; /&gt;
+        &lt;meta property=&quot;article:section&quot; content=&quot;{{ .Section }}&quot; /&gt;
+        {{ with .Params.tags }}
+          {{ range first 6 . }}
+            &lt;meta property=&quot;article:tag&quot; content=&quot;{{ . }}&quot; /&gt;
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    &lt;!-- Facebook Page Admin ID for Domain Insights --&gt;
+    {{ with .Site.Social.facebook_admin }}
+      &lt;meta property=&quot;fb:admins&quot; content=&quot;{{ . }}&quot; /&gt;
+    {{ end }}
+    {{ with .Site.Social.facebook_app_id }}
+      &lt;meta property=&quot;fb:app_id&quot; content=&quot;{{ . }}&quot; /&gt;
+    {{ end }}
 </code></pre>
 
-<p>If you choose to do the same or make our own modifications, don&rsquo;t hesitate to test them with Twitter&rsquo;s <a href="https://cards-dev.twitter.com/validator">card validator</a>.  Hopefully it turns out beautifully.</p>
+<p>As you can see I still have some work to do here.  Even after cleaning it up and making some small changes to <code>og:image</code>  I still think this is one <code>{{ end }}</code> tag away from complete.  But, hey, during testing it worked out, so I will continue to play and update this post if any new information comes to light.</p>
 
-<p><img src="http://brendan-quinn.xyz/css/images/twitter-card-validator.jpg" alt="Successful Twitter Card Validation" /></p>
+<p>Oh, and as always, don&rsquo;t forget to test your meta data with facebook&rsquo;s <a href="https://developers.facebook.com/tools/debug/og/object/">Open Graph Object Debugger</a>!</p>
+
+<p><img src="http://brendan-quinn.xyz/css/images/facebook-open-graph-debugger.jpg" alt="Facebooks Open Graph Debugger" /></p>
 
 <p>All the Best,</p>
 
@@ -402,11 +520,11 @@
 
             </div>
             <footer class="article-footer">
-    <a data-url="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" data-id="83d248d0a04c0674b6ef6a8edc16122d" class="article-share-link">
+    <a data-url="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph" data-id="fcf8cc073a8755bb7bfc7708c60d6677" class="article-share-link">
         Share
     </a>
     
-    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards/#disqus_thread" class="article-comment-link">
+    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -417,21 +535,14 @@
         
 <nav id="article-nav">
     
-    <a href="http://brendan-quinn.xyz/post/using-html5-and-media-queries-for-responsive-images" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Using HTML5 and Media Queries for Responsive Images</div>
+      <div class="article-nav-title">Working with Hugo&#39;s Internal Partial Templates: twitter-cards</div>
     </a>
     
 
-    
-    <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph</div>
-    </a>
     
 </nav>
 
@@ -442,9 +553,9 @@
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'brendanquinn';
-    var disqus_identifier = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-twitter-cards';
-    var disqus_title = 'Working with Hugo\x27s Internal Partial Templates: twitter-cards';
-    var disqus_url = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-twitter-cards';
+    var disqus_identifier = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-facebook-and-open-graph';
+    var disqus_title = 'Working with Hugo\x27s Internal Partial Templates: Facebook and Open Graph';
+    var disqus_url = 'http:\/\/brendan-quinn.xyz\/post\/working-with-hugos-internal-partial-templates-facebook-and-open-graph';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -473,7 +584,7 @@
                     <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-facebook-and-open-graph" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-lg.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/facebook-open-graph-meta-tags-lg.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -498,7 +609,7 @@
                     <a href="http://brendan-quinn.xyz/post/working-with-hugos-internal-partial-templates-twitter-cards" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/social-meta-tags-lg.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -523,7 +634,7 @@
                     <a href="http://brendan-quinn.xyz/post/using-html5-and-media-queries-for-responsive-images" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/responsive-images-landscape.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -548,7 +659,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-your-heroku-app" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/hover.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -573,7 +684,7 @@
                     <a href="http://brendan-quinn.xyz/post/pointing-hover-domain-to-github-pages" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: twitter-cards" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://brendan-quinn.xyz/css/images/banners/GithubPages.jpg)" alt="Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph" class="thumbnail-image"></span>
                         
                     
                     </a>
