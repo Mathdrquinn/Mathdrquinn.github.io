@@ -6,8 +6,131 @@
     <description>Recent content in Posts on Brendan Quinn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Feb 2016 03:01:40 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2016 22:46:42 -0500</lastBuildDate>
     <atom:link href="http://brendan-quinn.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Simple Linting using SCSSlint, ESlint, and Gulp in Atom</title>
+      <link>http://brendan-quinn.xyz/post/simple-linting-using-scsslint-eslint-and-gulp-in-atom</link>
+      <pubDate>Mon, 22 Feb 2016 22:46:42 -0500</pubDate>
+      
+      <guid>http://brendan-quinn.xyz/post/simple-linting-using-scsslint-eslint-and-gulp-in-atom</guid>
+      <description>
+
+&lt;p&gt;On small projects it is important to be mindful of your development process, but it is also important to make light work out of setting up a development environment.  For me, while working on a Wordpress project for a friend, this means making quick use of npm, gulp, scss-lint, and eslint.  For simplicity&amp;rsquo;s sake, the use-case will be creating a child theme in Wordpress, writing our CSS in SCSS, writing our javaScript in ES6 standards, and doing this all the the Atom text editor.&lt;/p&gt;
+
+&lt;h2 id=&#34;file-structure:bbae15dbe0acb2c92ff96321782edcee&#34;&gt;File Structure&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-linux&#34;&gt;wp-content/
+  |
+  + plugins/
+  |
+  - themes/
+    |
+    - child-theme/
+      |
+      + css/
+      |
+      + js/
+      |
+      + node_modules/
+      |
+      - src/
+        |
+        - scss/
+          |
+          - main.scss
+        |
+        - js/
+          |
+          - main.js
+      |
+      - .eslintrc
+      |
+      - gulpfile.js
+      |
+      - package.json
+      |
+      - style.css
+    |
+    + parent-theme/
+  |
+  - index.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;atom-packages-and-linting:bbae15dbe0acb2c92ff96321782edcee&#34;&gt;Atom Packages and Linting&lt;/h2&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s get Atom where it needs to be, if you don&amp;rsquo;t already install both the &lt;code&gt;linter-eslint&lt;/code&gt; and &lt;code&gt;linter-scss-lint&lt;/code&gt; packages and enable them.  This much will begin lintig your &lt;code&gt;.scss&lt;/code&gt; files.  To lint our javaScript files need a &lt;code&gt;.eslintrc&lt;/code&gt; file.  With the mindset of keeping it simple, I utilize &lt;a href=&#34;https://github.com/airbnb/javascript&#34;&gt;Airbnb&amp;rsquo;s lint rules&lt;/a&gt;.  Their code styles are well documented and it is easy to install.  My &lt;code&gt;.eslintrc&lt;/code&gt; is this simple.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;extends&amp;quot;: &amp;quot;airbnb/base&amp;quot;,
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The linter won&amp;rsquo;t be functional until the supporting node packages are installed.  Run &lt;code&gt;npm install &amp;ndash;save-dev eslint-config-airbnb eslint&lt;/code&gt; (&lt;a href=&#34;https://www.npmjs.com/package/eslint-config-airbnb&#34;&gt;Thank you, good documentation&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Great, now SCSS and ES6 javaScript files will lint.  Once, &lt;code&gt;gulpfile.js&lt;/code&gt; is setup we&amp;rsquo;ll be on our way.&lt;/p&gt;
+
+&lt;h2 id=&#34;setting-up-gulp:bbae15dbe0acb2c92ff96321782edcee&#34;&gt;Setting up Gulp&lt;/h2&gt;
+
+&lt;p&gt;Several node packages are needed in our gulp file.  Running this single command in your terminal will take care of all our needs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-linus&#34;&gt;npm install --save-dev  gulp gulp-autoprefixer gulp-babel
+                        gulp-concat gulp-cssnano gulp-rename
+                        gulp-ruby-sass gulp-sourcemaps
+                        babel-preset-es2015
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Boom.  Given the file structure above, I want to take &lt;code&gt;.scss&lt;/code&gt; files from &lt;code&gt;&amp;hellip;/src/scss&lt;/code&gt; and &lt;code&gt;.js&lt;/code&gt; files from &lt;code&gt;&amp;hellip;src/js&lt;/code&gt; and map them to &lt;code&gt;css&lt;/code&gt; and &lt;code&gt;js&lt;/code&gt;, respectively.  This gulp file will do that for us, while watching for changes in the source files.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const gulp = require(&#39;gulp&#39;);
+const sass = require(&#39;gulp-ruby-sass&#39;);
+const autoprefixer = require(&#39;gulp-autoprefixer&#39;);
+const minifycss = require(&#39;gulp-minify-css&#39;);
+const rename = require(&#39;gulp-rename&#39;);
+const sourcemaps = require(&#39;gulp-sourcemaps&#39;);
+const babel = require(&#39;gulp-babel&#39;);
+const concat = require(&#39;gulp-concat&#39;);
+
+gulp.task(&#39;babel&#39;, () =&amp;gt;
+    gulp.src(&#39;src/js/**/*.js&#39;)
+      .pipe(sourcemaps.init())
+      .pipe(babel({
+        presets: [&#39;es2015&#39;],
+      }))
+      .pipe(concat(&#39;main.js&#39;))
+      .pipe(sourcemaps.write(&#39;.&#39;))
+      .pipe(gulp.dest(&#39;js&#39;))
+);
+
+gulp.task(&#39;sass&#39;, () =&amp;gt;
+  sass(&#39;src/scss/main.scss&#39;, { style: &#39;expanded&#39; })
+    .pipe(gulp.dest(&#39;css&#39;))
+    .pipe(autoprefixer(&#39;last 2 version&#39;, &#39;safari 5&#39;, &#39;ie 8&#39;, &#39;ie 9&#39;, &#39;opera 12.1&#39;))
+    .pipe(gulp.dest(&#39;css&#39;))
+    .pipe(rename({ suffix: &#39;.min&#39; }))
+    .pipe(minifycss())
+    .pipe(gulp.dest(&#39;css&#39;))
+);
+
+gulp.task(&#39;watch&#39;, () =&amp;gt; {
+  gulp.watch(&#39;src/scss/**/*.scss&#39;, [&#39;sass&#39;]);
+  gulp.watch(&#39;src/js/**/*.js&#39;, [&#39;babel&#39;]);
+});
+
+
+gulp.task(&#39;default&#39;, [&#39;sass&#39;, &#39;babel&#39;, &#39;watch&#39;], () =&amp;gt; {});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There you have it.  While in the &lt;code&gt;child-theme&lt;/code&gt; directory, run the &lt;code&gt;gulp&lt;/code&gt; command to see it all compile and watch for changes.&lt;/p&gt;
+
+&lt;p&gt;I hope this was helpful.  Feel free to comment if you have any questions.&lt;/p&gt;
+
+&lt;p&gt;All the Best,&lt;/p&gt;
+
+&lt;p&gt;Brendan&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Working with Hugo&#39;s Internal Partial Templates: Facebook and Open Graph</title>
